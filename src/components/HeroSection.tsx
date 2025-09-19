@@ -1,213 +1,134 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Clock, Star, QrCode, X, Smartphone } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Search, MapPin, Clock, Star, Users, CheckCircle } from "lucide-react"
 import { useState } from "react"
 
 export default function HeroSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [searchCategory, setSearchCategory] = useState("wellness-pro")
 
   return (
     <section className="relative gradient-hero overflow-hidden min-h-[90vh] flex items-center">
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-teal-200 rounded-full blur-xl"></div>
-        <div className="absolute top-40 right-16 w-24 h-24 bg-blue-200 rounded-full blur-lg"></div>
-        <div className="absolute bottom-20 left-1/4 w-20 h-20 bg-purple-200 rounded-full blur-lg"></div>
-        <div className="absolute bottom-40 right-1/3 w-16 h-16 bg-pink-200 rounded-full blur-lg"></div>
-        <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-teal-100 rounded-full blur-2xl opacity-30"></div>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="space-y-8 text-center lg:text-left">
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-balance">
-                <span className="text-gray-900 block">Your</span>
-                <span className="text-gray-900 block">Wellness</span>
-                <span className="text-gray-900 block">Journey</span>
-                <span className="text-teal-600 block">Starts Here</span>
-              </h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center">
+          {/* Main Heading */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+            Find Your Perfect{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600">
+              Pro
+            </span>
+          </h1>
 
-              <p className="text-xl lg:text-2xl text-gray-600 max-w-2xl leading-relaxed">
-                Connect with top professionals, book appointments instantly, and take charge of your personal care journey.
-              </p>
-            </div>
+          {/* Subheading */}
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Book trusted health, wellness, and beauty professionals instantly. 
+            From medical appointments to spa treatments, we connect you with the best.
+          </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
-                size="lg"
-                className="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-              >
-                Get Started Now
-                <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Button>
-
-              <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-                <DialogTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="btn-outline text-lg px-8 py-4"
+          {/* Search Section */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="bg-white rounded-2xl shadow-2xl p-2 border border-gray-200">
+              <div className="flex flex-col md:flex-row gap-2">
+                {/* Category Dropdown */}
+                <div className="relative">
+                  <select 
+                    value={searchCategory}
+                    onChange={(e) => setSearchCategory(e.target.value)}
+                    className="bg-white border-r border-gray-200 px-4 py-3 rounded-l-xl text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500"
                   >
-                    <Smartphone className="mr-2 h-5 w-5" />
-                    Get App
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-md bg-white">
-                  <div className="relative">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="absolute right-0 top-0 h-8 w-8 p-0 hover:bg-gray-100"
-                      onClick={() => setIsModalOpen(false)}
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
+                    <option value="wellness-pro">Wellness Pro</option>
+                    <option value="symptoms">Symptoms</option>
+                    <option value="speciality">Speciality</option>
+                    <option value="location">Location</option>
+                  </select>
+                </div>
 
-                    <div className="text-center space-y-6 pt-6">
-                      <div className="section-icon bg-teal-100 mx-auto">
-                        <Smartphone className="h-8 w-8 text-teal-600" />
-                      </div>
+                {/* Search Input */}
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search Pro Name"
+                    className="w-full px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none"
+                  />
+                </div>
 
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Get the OpenMyPro app</h3>
-                        <p className="text-gray-600">Scan the QR code to download the app now</p>
-                      </div>
-
-                      <div className="flex justify-center space-x-4">
-                        <div className="w-24 h-24 bg-white border border-gray-200 rounded-xl flex items-center justify-center shadow-sm">
-                          <img 
-                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2FQRAppStore.png&w=640&q=100" 
-                            alt="App Store QR Code" 
-                            className="w-full h-full object-cover rounded-xl"
-                          />
-                        </div>
-                        <div className="w-24 h-24 bg-white border border-gray-200 rounded-xl flex items-center justify-center shadow-sm">
-                          <img 
-                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2FQRPlayStore.png&w=640&q=100" 
-                            alt="Google Play QR Code" 
-                            className="w-full h-full object-cover rounded-xl"
-                          />
-                        </div>
-                      </div>
-
-                      <p className="text-sm text-gray-500">Or check it out in the app stores</p>
-
-                      <div className="flex gap-4 justify-center">
-                        <a 
-                          href="https://apps.apple.com/us/app/open-my-doctor-doctor-finder/id6737090324"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:scale-95 duration-150 ease-in-out"
-                        >
-                          <img 
-                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2Fappstore.png&w=640&q=100" 
-                            alt="Download on the App Store" 
-                            className="h-12 w-auto"
-                          />
-                        </a>
-                        <a 
-                          href="https://play.google.com/store/apps/details?id=com.blossend.omd"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:scale-95 duration-150 ease-in-out"
-                        >
-                          <img 
-                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2Fgoogleplay.png&w=640&q=100" 
-                            alt="Get it on Google Play" 
-                            className="h-12 w-auto"
-                          />
-                        </a>
-                      </div>
-
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setIsModalOpen(false)}
-                        className="text-gray-500"
-                      >
-                        Remind me later
-                      </Button>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 pt-8">
-              <div className="flex items-center space-x-3 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-                <CheckCircle className="h-5 w-5 text-green-500" />
-                <span className="text-sm font-medium text-gray-700">Verified Pros</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-                <Clock className="h-5 w-5 text-blue-500" />
-                <span className="text-sm font-medium text-gray-700">24/7 Support</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-                <Star className="h-5 w-5 text-yellow-500" />
-                <span className="text-sm font-medium text-gray-700">Top Rated</span>
+                {/* Search Button */}
+                <Button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-r-xl font-medium">
+                  <Search className="mr-2 h-5 w-5" />
+                  Search
+                </Button>
               </div>
             </div>
           </div>
 
-          {/* Right Content - Professional Preview */}
-          <div className="relative lg:ml-8">
-            <div className="relative">
-              {/* Main Card */}
-              <div className="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
-                <div className="aspect-[4/3] bg-gradient-to-br from-teal-50 via-blue-50 to-purple-50 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                  {/* Healthcare Professional Placeholder */}
-                  <div className="text-center space-y-6 relative z-10">
-                    <div className="w-32 h-32 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full mx-auto flex items-center justify-center shadow-lg">
-                      <svg className="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="text-2xl font-bold text-gray-900">Healthcare Professionals</div>
-                      <div className="text-lg text-gray-600">Ready to serve you instantly</div>
-                      <Badge className="bg-green-100 text-green-700 hover:bg-green-100">
-                        <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                        Available Now
-                      </Badge>
-                    </div>
-                  </div>
-
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-4 left-4 w-8 h-8 border-2 border-teal-400 rounded-full"></div>
-                    <div className="absolute top-8 right-8 w-6 h-6 border-2 border-blue-400 rounded-full"></div>
-                    <div className="absolute bottom-8 left-8 w-4 h-4 border-2 border-purple-400 rounded-full"></div>
-                    <div className="absolute bottom-4 right-4 w-10 h-10 border-2 border-pink-400 rounded-full"></div>
-                  </div>
-                </div>
+          {/* Quick Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20">
+              <div className="flex items-center justify-center mb-2">
+                <Users className="h-6 w-6 text-teal-600" />
               </div>
-
-              {/* Floating Stats Cards */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-teal-600">15K+</div>
-                  <div className="text-xs text-gray-600">Happy Clients</div>
-                </div>
+              <div className="text-2xl font-bold text-gray-900">10,000+</div>
+              <div className="text-sm text-gray-600">Verified Pros</div>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20">
+              <div className="flex items-center justify-center mb-2">
+                <MapPin className="h-6 w-6 text-teal-600" />
               </div>
-
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">98%</div>
-                  <div className="text-xs text-gray-600">Satisfaction</div>
-                </div>
+              <div className="text-2xl font-bold text-gray-900">500+</div>
+              <div className="text-sm text-gray-600">Cities</div>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20">
+              <div className="flex items-center justify-center mb-2">
+                <Clock className="h-6 w-6 text-teal-600" />
               </div>
+              <div className="text-2xl font-bold text-gray-900">24/7</div>
+              <div className="text-sm text-gray-600">Booking</div>
+            </div>
+            
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20">
+              <div className="flex items-center justify-center mb-2">
+                <Star className="h-6 w-6 text-teal-600" />
+              </div>
+              <div className="text-2xl font-bold text-gray-900">4.9★</div>
+              <div className="text-sm text-gray-600">Rating</div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-gray-600">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-teal-600" />
+              <span className="text-sm font-medium">Verified Professionals</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-teal-600" />
+              <span className="text-sm font-medium">Instant Booking</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-teal-600" />
+              <span className="text-sm font-medium">Secure Payments</span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-teal-200 rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-16 h-16 bg-emerald-200 rounded-full opacity-20 animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-5 w-12 h-12 bg-teal-300 rounded-full opacity-30 animate-bounce"></div>
     </section>
   )
 }

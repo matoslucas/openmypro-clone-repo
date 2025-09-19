@@ -40,7 +40,7 @@ export default function LoadingAnimation() {
               fill="none" 
               pathLength="100" 
               d="M0.625 21.5 h10.25 l3.75 -5.875 l7.375 15 l9.75 -30 l7.375 20.875 v0 h10.25" 
-              className="car stroke-teal-600 animate-pulse"
+              className="car stroke-teal-600"
               style={{
                 strokeDasharray: '100',
                 strokeDashoffset: '100',

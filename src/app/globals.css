@@ -79,12 +79,26 @@
 }
 
 @layer components {
-  .gradient-hero {
-    background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 25%, #ccfbf1 50%, #f0fdfa 75%, #f8fafc 100%);
+  /* OpenMyPro SVG Animation Classes */
+  .jsx-7945ccc7fbf2b9f7.container {
+    /* Container styles for the SVG animation */
   }
-
-  .gradient-section {
-    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #e0f2fe 100%);
+  
+  .jsx-7945ccc7fbf2b9f7.track {
+    stroke: #d1d5db; /* gray-300 */
+  }
+  
+  .jsx-7945ccc7fbf2b9f7.car {
+    stroke: #0d9488; /* teal-600 */
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawPath 2s ease-in-out forwards;
+  }
+  
+  @keyframes drawPath {
+    to {
+      stroke-dashoffset: 0;
+    }
   }
 
   .card-hover {

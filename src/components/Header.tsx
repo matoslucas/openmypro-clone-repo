@@ -1,21 +1,16 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Badge } from "@/components/ui/badge"
-import { Search, Menu, User, Heart, Clock, Star, Bell, ChevronDown, Stethoscope, Brain, Dumbbell, Sparkles } from "lucide-react"
+import { Search, Menu } from "lucide-react"
 import { useState } from "react"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isWellnessMenuOpen, setIsWellnessMenuOpen] = useState(false)
-  const [isCompanyMenuOpen, setIsCompanyMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className="flex min-h-[70px] tracking-wide relative z-50 pt-8 items-center justify-center">
+      <div className="fixed flex items-center bg-white border border-slate-600/20 rounded-full shadow-2xl justify-between sm:px-5 px-4 py-3 w-full max-w-screen-xl hover:bg-white gap-2" style={{boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.2)'}}>
+        <div className="flex items-center justify-between w-full">
           {/* Mobile menu button */}
           <Button
             variant="ghost"
@@ -27,184 +22,104 @@ export default function Header() {
           </Button>
 
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center shadow-sm">
-                  <span className="text-white font-bold text-lg">O</span>
-                </div>
-                <span className="text-2xl font-bold text-gray-900">
-                  Open<span className="text-teal-600">MyPro</span>
-                </span>
-              </div>
-            </div>
+          <div className="flex flex-row gap-8">
+            <a href="https://www.openmypro.com/">
+              <img 
+                alt="logo" 
+                width="45" 
+                height="40" 
+                className="max-sm:hidden" 
+                style={{color: 'transparent', width: '100%', height: 'auto'}}
+                src="/assets/images/OMDLogo.png"
+              />
+            </a>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:block">
-            <div className="flex items-center space-x-8">
-              <DropdownMenu onOpenChange={setIsWellnessMenuOpen}>
-                <DropdownMenuTrigger className="dropdown-trigger flex items-center text-gray-700 hover:text-teal-600 bg-transparent border-0 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                  Wellness Pro
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isWellnessMenuOpen ? 'rotate-180' : ''}`} />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="dropdown-content w-64 mt-1">
-                  <DropdownMenuItem className="dropdown-item flex items-center group">
-                    <div className="dropdown-item-icon w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-red-200 transition-colors">
-                      <Heart className="h-4 w-4 text-red-600" />
-                    </div>
-                    <div>
-                      <div className="font-medium">Mental Health</div>
-                      <div className="text-xs text-gray-500">Therapy & counseling</div>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="dropdown-item flex items-center group">
-                    <div className="dropdown-item-icon w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-blue-200 transition-colors">
-                      <Stethoscope className="h-4 w-4 text-blue-600" />
-                    </div>
-                    <div>
-                      <div className="font-medium">Physical Therapy</div>
-                      <div className="text-xs text-gray-500">Recovery & rehabilitation</div>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="dropdown-item flex items-center group">
-                    <div className="dropdown-item-icon w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-green-200 transition-colors">
-                      <Star className="h-4 w-4 text-green-600" />
-                    </div>
-                    <div>
-                      <div className="font-medium">Nutrition</div>
-                      <div className="text-xs text-gray-500">Diet & wellness coaching</div>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="dropdown-item flex items-center group">
-                    <div className="dropdown-item-icon w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-purple-200 transition-colors">
-                      <Sparkles className="h-4 w-4 text-purple-600" />
-                    </div>
-                    <div>
-                      <div className="font-medium">Beauty Services</div>
-                      <div className="text-xs text-gray-500">Spa & aesthetic treatments</div>
-                    </div>
-                  </DropdownMenuItem>
-                  <div className="border-t border-gray-100 my-2"></div>
-                  <DropdownMenuItem className="dropdown-item flex items-center group">
-                    <div className="dropdown-item-icon w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-teal-200 transition-colors">
-                      <Dumbbell className="h-4 w-4 text-teal-600" />
-                    </div>
-                    <div>
-                      <div className="font-medium">View All Services</div>
-                      <div className="text-xs text-gray-500">Explore all wellness categories</div>
-                    </div>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </nav>
 
           {/* Search Bar */}
-          <div className="flex-1 max-w-md mx-6">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <Input
-                type="text"
-                placeholder="Symptoms, Speciality, Location"
-                className="pl-10 pr-4 py-2.5 w-full border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 focus:bg-white transition-colors"
+          <div className="flex-1 flex items-center justify-center max-lg:hidden">
+            <div className="flex z-30 flex-row items-center border sm:rounded-full h-12 sm:h-9 bg-white overflow-hidden border-gray-400 border-[0.5px]">
+              <div>
+                <button className="text-slate-700 bg-white/95 p-2" tabIndex={0} type="button" style={{boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'}}>
+                  <Menu className="h-5 w-5" />
+                </button>
+              </div>
+              <div className="relative w-[4rem] sm:w-[8rem]">
+                <select className="bg-white/95 backdrop-blur-lg text-gray-700 font-normal text-sm border border-white/30 rounded-md sm:px-3 py-1 appearance-none relative h-9 w-20 sm:w-32 transition-all duration-200 focus:ring-0 focus:border-white">
+                  <option value="doctor" selected>Wellness Pro</option>
+                  <option value="symptom">Symptoms</option>
+                  <option value="speciality">Speciality</option>
+                  <option value="location">Location</option>
+                </select>
+              </div>
+              <input 
+                autoFocus 
+                autoComplete="off" 
+                className="flex w-[30rem] h-8 text-sm placeholder-gray-700 border-none rounded-r-lg bg-white/95 backdrop-blur-lg focus:ring-0 border-l-gray-900 text-gray-700"
+                placeholder="Search Pro Name"
+                style={{boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'}}
               />
+              <button className="transform -translate-x-1 p-[0.2rem] bg-gray-800 hover:bg-gray-900 rounded-full transition-colors duration-200">
+                <Search className="text-white h-5 w-5 hover:scale-105 duration-75 ease-in" />
+              </button>
             </div>
           </div>
 
           {/* Company Menu */}
-          <DropdownMenu onOpenChange={setIsCompanyMenuOpen}>
-            <DropdownMenuTrigger className="dropdown-trigger flex items-center text-gray-700 hover:text-teal-600 bg-transparent border-0 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-              Company
-              <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isCompanyMenuOpen ? 'rotate-180' : ''}`} />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="dropdown-content w-48 mt-1">
-              <DropdownMenuItem className="dropdown-item flex items-center group">
-                <div className="dropdown-item-icon w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-gray-200 transition-colors">
-                  <User className="h-4 w-4 text-gray-600" />
-                </div>
-                <div>
-                  <div className="font-medium">About</div>
-                  <div className="text-xs text-gray-500">Our story & mission</div>
-                </div>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="dropdown-item flex items-center group">
-                <div className="dropdown-item-icon w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-gray-200 transition-colors">
-                  <Heart className="h-4 w-4 text-gray-600" />
-                </div>
-                <div>
-                  <div className="font-medium">Privacy Policy</div>
-                  <div className="text-xs text-gray-500">Your data protection</div>
-                </div>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="dropdown-item flex items-center group">
-                <div className="dropdown-item-icon w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-gray-200 transition-colors">
-                  <Star className="h-4 w-4 text-gray-600" />
-                </div>
-                <div>
-                  <div className="font-medium">Terms of Service</div>
-                  <div className="text-xs text-gray-500">Legal terms & conditions</div>
-                </div>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <div id="collapseMenu" className="max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50">
+            <ul className="lg:flex lg:gap-x-10 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+              <li className="group max-lg:border-b max-lg:py-3 relative">
+                <span className="px-3 py-1 rounded-md border-gray-900 bg-transparent text-gray-900 text-sm font-bold lg:hover:text-gray-900 block">Company</span>
+                <ul className="absolute rounded-md mt-4 shadow-2xl bg-white space-y-3 lg:top-5 max-lg:top-8 -left-6 min-w-[250px] z-50 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500">
+                  <li className="py-1">
+                    <a className="hover:text-gray-900 text-gray-600 text-base flex flex-row gap-2 items-center" target="_blank" rel="noopener noreferrer" href="https://www.blossend.com/about">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-info">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                      </svg>
+                      About
+                    </a>
+                  </li>
+                  <li className="py-1">
+                    <a className="hover:text-gray-900 text-gray-600 text-base flex flex-row gap-2 items-center" target="_blank" rel="noopener noreferrer" href="https://www.openmypro.com/privacy">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield">
+                        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                      </svg>
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li className="py-1">
+                    <a className="hover:text-gray-900 text-gray-600 text-base flex flex-row gap-2 items-center" target="_blank" rel="noopener noreferrer" href="https://www.openmypro.com/Terms&Conditions">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-file-text">
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                        <path d="M10 9H8"></path>
+                        <path d="M16 13H8"></path>
+                        <path d="M16 17H8"></path>
+                      </svg>
+                      Terms of Service
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
           {/* Auth Buttons */}
-          <div className="flex items-center space-x-3">
-            <Button variant="outline" size="sm" className="btn-outline">
-              Sign In
-            </Button>
-            <Button size="sm" className="btn-primary">
-              Sign Up
-            </Button>
+          <div className="flex items-center space-x-4 max-lg:ml-auto">
+            <div className="border-l border-[#333] h-6 max-lg:hidden"></div>
+            <button className="px-3 py-1 text-sm rounded-md font-medium text-teal-800 border border-teal-500 bg-teal-100/50 hover:bg-teal-600 hover:text-white hover:border-teal-600">
+              Sign in
+            </button>
+            <a href="https://www.openmypro.com/signup">
+              <button className="px-3 py-1 text-sm rounded-md font-medium text-white border border-teal-600 bg-teal-600 hover:text-teal-800 hover:bg-teal-100/50 hover:border-teal-500">
+                Sign up
+              </button>
+            </a>
           </div>
         </div>
       </div>
-
-      {/* Status Banner */}
-      <div className="bg-gradient-to-r from-teal-50 to-green-50 border-b border-teal-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3">
-            <div className="flex items-center text-sm text-teal-700">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-              <Bell className="h-4 w-4 mr-2" />
-              <span className="font-medium">Wellness Pros Available Now</span>
-              <Badge className="ml-3 bg-green-100 text-green-700 hover:bg-green-100 text-xs">
-                Live
-              </Badge>
-            </div>
-            <Button variant="ghost" size="sm" className="text-teal-700 hover:text-teal-900 hover:bg-teal-100">
-              ×
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
-          <div className="px-4 pt-4 pb-6 space-y-4">
-            <div className="space-y-2">
-              <Button variant="ghost" className="w-full justify-start text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50">
-                <Heart className="mr-3 h-4 w-4" />
-                Wellness Pro
-              </Button>
-              <Button variant="ghost" className="w-full justify-start text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50">
-                <User className="mr-3 h-4 w-4" />
-                Company
-              </Button>
-            </div>
-            <div className="pt-4 border-t border-gray-100 space-y-2">
-              <Button variant="outline" className="w-full btn-outline">
-                Sign In
-              </Button>
-              <Button className="w-full btn-primary">
-                Sign Up
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   )
 }
