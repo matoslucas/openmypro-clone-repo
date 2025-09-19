@@ -10,10 +10,12 @@ import MedicalClinical from '@/components/MedicalClinical'
 import TopRated from '@/components/TopRated'
 import SearchSection from '@/components/SearchSection'
 import Footer from '@/components/Footer'
+import LoadingAnimation from '@/components/LoadingAnimation'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <LoadingAnimation />
       <Header />
       <HeroSection />
       <AvailableNow />

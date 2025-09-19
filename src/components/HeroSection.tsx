@@ -81,23 +81,49 @@ export default function HeroSection() {
                       </div>
 
                       <div className="flex justify-center space-x-4">
-                        <div className="w-24 h-24 bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center">
-                          <QrCode className="h-12 w-12 text-gray-400" />
+                        <div className="w-24 h-24 bg-white border border-gray-200 rounded-xl flex items-center justify-center shadow-sm">
+                          <img 
+                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2FQRAppStore.png&w=640&q=100" 
+                            alt="App Store QR Code" 
+                            className="w-full h-full object-cover rounded-xl"
+                          />
                         </div>
-                        <div className="w-24 h-24 bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center">
-                          <QrCode className="h-12 w-12 text-gray-400" />
+                        <div className="w-24 h-24 bg-white border border-gray-200 rounded-xl flex items-center justify-center shadow-sm">
+                          <img 
+                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2FQRPlayStore.png&w=640&q=100" 
+                            alt="Google Play QR Code" 
+                            className="w-full h-full object-cover rounded-xl"
+                          />
                         </div>
                       </div>
 
                       <p className="text-sm text-gray-500">Or check it out in the app stores</p>
 
-                      <div className="grid grid-cols-2 gap-3">
-                        <Button variant="outline" className="flex items-center justify-center space-x-2 h-12">
-                          <span className="text-sm">App Store</span>
-                        </Button>
-                        <Button variant="outline" className="flex items-center justify-center space-x-2 h-12">
-                          <span className="text-sm">Google Play</span>
-                        </Button>
+                      <div className="flex gap-4 justify-center">
+                        <a 
+                          href="https://apps.apple.com/us/app/open-my-doctor-doctor-finder/id6737090324"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:scale-95 duration-150 ease-in-out"
+                        >
+                          <img 
+                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2Fappstore.png&w=640&q=100" 
+                            alt="Download on the App Store" 
+                            className="h-12 w-auto"
+                          />
+                        </a>
+                        <a 
+                          href="https://play.google.com/store/apps/details?id=com.blossend.omd"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:scale-95 duration-150 ease-in-out"
+                        >
+                          <img 
+                            src="https://www.openmypro.com/_next/image?url=%2Fassets%2Fimages%2Fgoogleplay.png&w=640&q=100" 
+                            alt="Get it on Google Play" 
+                            className="h-12 w-auto"
+                          />
+                        </a>
                       </div>
 
                       <Button
